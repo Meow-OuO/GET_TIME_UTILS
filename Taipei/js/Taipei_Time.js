@@ -1,4 +1,4 @@
-setInterval(Time_now,1000);
+window.setInterval(Time_now);
 
 function Time_now() {
 	let date = new Date();
