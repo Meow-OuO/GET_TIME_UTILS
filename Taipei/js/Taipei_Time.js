@@ -1,8 +1,8 @@
 window.onload = function() {
-  window.setInterval(fetchTime, 1000);
+  window.setInterval(Time_now);
 }
 
-async function fetchTime() {
+async function Time_now() {
   try {
     const response = await fetch('http://worldtimeapi.org/api/timezone/Asia/Taipei');
     const data = await response.json();
