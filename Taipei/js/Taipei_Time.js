@@ -1,27 +1,44 @@
+const API_URL = 'https://worldtimeapi.org/api/timezone/Asia/Taipei';
+const TIME_ELEMENT_ID = 'time';
+const TIME_OPTIONS = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+  hourCycle: 'h23',
+  timeZone: 'Asia/Taipei',
+  timeZoneName: 'longOffset'
+};
+let currentTime;
+
 window.onload = function() {
-  window.setInterval(Time_now,1000);
-}
+  fetchTime();
+  setInterval(updateTime, 1000);
+  setInterval(fetchTime, 60000); // 每分鐘請求一次時間數據
+};
 
-async function Time_now() {
+async function fetchTime() {
   try {
-    const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Taipei');
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
     const data = await response.json();
-    const dateTime = new Date(data.datetime);
-
-    document.getElementById("time").innerHTML = dateTime.toLocaleString('en-ca', {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hourCycle: 'h23',
-      timeZone: 'Asia/Taipei',
-      timeZoneName: 'longOffset'
-    }) + '&ensp;' + '(台北標準時間)';
+    currentTime = new Date(data.datetime);
+    updateTime();
   } catch (error) {
     console.error('Error fetching time:', error);
+    document.getElementById(TIME_ELEMENT_ID).innerText = '無法獲取時間';
+  }
+}
+
+function updateTime() {
+  if (currentTime) {
+    currentTime.setSeconds(currentTime.getSeconds() + 1);
+    document.getElementById(TIME_ELEMENT_ID).innerHTML = currentTime.toLocaleString('en-ca', TIME_OPTIONS) + '&ensp;' + '(台北標準時間)';
   }
 }
 
