@@ -1,5 +1,5 @@
 window.onload = function() {
-  window.setInterval(Time_now);
+  window.setInterval(Time_now,1000);
 }
 
 async function Time_now() {
