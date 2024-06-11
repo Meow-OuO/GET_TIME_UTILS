@@ -4,7 +4,7 @@ window.onload = function() {
 
 async function Time_now() {
   try {
-    const response = await fetch('http://worldtimeapi.org/api/timezone/Asia/Taipei');
+    const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Taipei');
     const data = await response.json();
     const dateTime = new Date(data.datetime);
 
