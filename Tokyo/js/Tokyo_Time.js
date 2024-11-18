@@ -17,7 +17,7 @@ let currentTime;
 window.onload = function() {
   fetchTime();
   setInterval(updateTime, 1000);
-  setInterval(fetchTime, 60000); // 每分鐘請求一次時間數據
+  setInterval(fetchTime, 300000); // 每5分鐘請求一次時間數據
 };
 
 async function fetchTime() {
