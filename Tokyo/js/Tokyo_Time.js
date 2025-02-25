@@ -39,7 +39,7 @@ async function fetchTime() {
 function updateTime() {
     if (currentTime) {
         currentTime.setSeconds(currentTime.getSeconds() + 1);
-        document.getElementById(TIME_ELEMENT_ID).innerHTML = currentTime.toLocaleString("en-ca", TIME_OPTIONS) + "&ensp;GMT+09:00&ensp;(東京標準時間)";
+        document.getElementById(TIME_ELEMENT_ID).innerHTML = currentTime.toLocaleString("en-ca", TIME_OPTIONS) + "&nbsp;GMT+09:00&nbsp;(東京標準時間)";
     }
 }
 
