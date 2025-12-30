@@ -1,4 +1,4 @@
-const API_URL = "https://worldtimeapi.org/api/timezone/Asia/Tokyo";
+const API_URL = "https://timeapi.io/api/time/current/zone?timeZone=Asia/Tokyo";
 const TIME_ELEMENT_ID = "time";
 
 const TIME_OPTIONS = {
