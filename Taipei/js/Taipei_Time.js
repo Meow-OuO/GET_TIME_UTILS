@@ -29,7 +29,7 @@ async function fetchTime() {
         }
 
         const data = await response.json();
-        currentTime = new Date(data.datetime);
+        currentTime = new Date(data.dateTime);
     } catch (error) {
         console.error("Error fetching time:", error);
         document.getElementById(TIME_ELEMENT_ID).innerText = "無法獲取時間";
