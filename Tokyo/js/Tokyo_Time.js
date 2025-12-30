@@ -1,4 +1,4 @@
-const API_URL = "https://timeapi.io/api/timezone/zone?timeZone=Asia/Tokyo";
+const API_URL = "https://worldtimeapi.org/api/timezone/Asia/Tokyo";
 const TIME_ELEMENT_ID = "time";
 
 const TIME_OPTIONS = {
@@ -29,7 +29,7 @@ async function fetchTime() {
         }
 
         const data = await response.json();
-        currentTime = new Date(data.currentLocalTime);
+        currentTime = new Date(data.datetime);
     } catch (error) {
         console.error("Error fetching time:", error);
         document.getElementById(TIME_ELEMENT_ID).innerText = "無法獲取時間";
@@ -39,7 +39,7 @@ async function fetchTime() {
 function updateTime() {
     if (currentTime) {
         currentTime.setSeconds(currentTime.getSeconds() + 1);
-        document.getElementById(TIME_ELEMENT_ID).innerHTML = currentTime.toLocaleString("en-ca", TIME_OPTIONS) + "&nbsp;GMT+09:00&nbsp;(東京標準時間)";
+        document.getElementById(TIME_ELEMENT_ID).innerHTML = currentTime.toLocaleString("en-ca", TIME_OPTIONS) + "&nbsp;GMT+08:00&nbsp;(台北標準時間)";
     }
 }
 
