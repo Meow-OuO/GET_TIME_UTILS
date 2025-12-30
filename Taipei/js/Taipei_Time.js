@@ -1,4 +1,4 @@
-const API_URL = "https://worldtimeapi.org/api/timezone/Asia/Taipei";
+const API_URL = "https://timeapi.io/api/time/current/zone?timeZone=Asia/Taipei";
 const TIME_ELEMENT_ID = "time";
 
 const TIME_OPTIONS = {
