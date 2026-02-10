@@ -1,4 +1,4 @@
-const API_URL = "https://timeapi.io/api/v1/time/current/zone?timezone=asia%2Ftokyo";
+const API_URL = "https://timeapi.io/api/time/current/zone?timeZone=asia%2Ftokyo";
 const TIME_ELEMENT_ID = "time";
 
 const TIME_OPTIONS = {
@@ -29,7 +29,7 @@ async function fetchTime() {
         }
 
         const data = await response.json();
-        currentTime = new Date(data.date_time);
+        currentTime = new Date(data.dateTime);
     } catch (error) {
         console.error("Error fetching time:", error);
         document.getElementById(TIME_ELEMENT_ID).innerText = "無法獲取時間";
